@@ -32,6 +32,8 @@ module.exports.loop = function () {
     /**
      * logic for spawning goes here
      */
-    spawn();
+    if (Game.time % 5 == 0) {
+        spawn();
+    }
 
 }
