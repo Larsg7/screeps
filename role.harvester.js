@@ -1,6 +1,7 @@
 /**
  * this module defines all the logic for a harvester
  */
+var roleBuilder = require('role.builder');
 
 var roleHarvester = {
     run: function (creep) {
@@ -32,6 +33,7 @@ var roleHarvester = {
             }
             else {
                 //creep.say('no targets to deposit');
+                roleBuilder.run(creep);
             }
 
             if (creep.carry.energy == 0) {

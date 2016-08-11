@@ -2,6 +2,7 @@ var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
+var roleDefender = require('role.defender');
 var spawn = require('spawn');
 
 module.exports.loop = function () {
@@ -26,6 +27,8 @@ module.exports.loop = function () {
             case 'repairer':
                 roleRepairer.run(creep);
                 break;
+            case 'defender':
+                roleDefender.run(creep);
         }
     }
 
