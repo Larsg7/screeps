@@ -33,7 +33,13 @@ var roleHarvester = {
             }
             else {
                 //creep.say('no targets to deposit');
-                roleBuilder.run(creep);
+                structure = creep.pos.findClosestByPath(FIND_MY_STRUCTURES, {
+                    filter: s => s.structureType == STRUCTURE_CONTAINER
+                            && s.energy < s.energyCapacity
+                });
+                if (!structure) {
+                    roleBuilder.run(creep);
+                }
             }
 
             if (creep.carry.energy == 0) {

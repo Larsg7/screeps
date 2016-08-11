@@ -1,9 +1,14 @@
+/**
+ * main.js of my script for the game 'screeps'
+ * @author: Larsg7, https://github.com/Larsg7
+ */
 var roleHarvester = require('role.harvester');
 var roleUpgrader = require('role.upgrader');
 var roleBuilder = require('role.builder');
 var roleRepairer = require('role.repairer');
 var roleDefender = require('role.defender');
 var spawn = require('spawn');
+var defend = require('defend');
 
 module.exports.loop = function () {
 
@@ -30,6 +35,10 @@ module.exports.loop = function () {
             case 'defender':
                 roleDefender.run(creep);
         }
+
+        if (creep.room.controller.level == 3) {
+            creep.room.createConstructionSite(35,38,STRUCTURE_TOWER);
+        }
     }
 
     /**
@@ -38,5 +47,10 @@ module.exports.loop = function () {
     if (Game.time % 5 == 0) {
         spawn();
     }
+
+    /**
+     * logic for defending goes her
+     */
+    defend();
 
 }
