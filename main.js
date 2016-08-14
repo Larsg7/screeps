@@ -1,56 +1,17 @@
 /**
- * main.js of my script for the game 'screeps'
+ * main file for my ai-script for the game 'screeps'
  * @author: Larsg7, https://github.com/Larsg7
  */
-var roleHarvester = require('role.harvester');
-var roleUpgrader = require('role.upgrader');
-var roleBuilder = require('role.builder');
-var roleRepairer = require('role.repairer');
-var roleDefender = require('role.defender');
-var spawn = require('spawn');
-var defend = require('defend');
+
+var HelperClass = require('hellper.functions');
+var MainAIClass = require('mainAI');
 
 module.exports.loop = function () {
 
+    var Helper = new HelperClass;
+    Helper.garbageCollection();
 
-    /**
-     * logic for creeps goes here
-     */
-    for (let name in Game.creeps) {
-        var creep = Game.creeps[name];
+    var MainAI = new MainAIClass;
+    MainAI.run();
 
-        switch (creep.memory.role) {
-            case 'harvester':
-                roleHarvester.run(creep);
-                break;
-            case 'upgrader':
-                roleUpgrader.run(creep);
-                break;
-            case 'builder':
-                roleBuilder.run(creep);
-                break;
-            case 'repairer':
-                roleRepairer.run(creep);
-                break;
-            case 'defender':
-                roleDefender.run(creep);
-        }
-
-        if (creep.room.controller.level == 3) {
-            creep.room.createConstructionSite(35,38,STRUCTURE_TOWER);
-        }
-    }
-
-    /**
-     * logic for spawning goes here
-     */
-    if (Game.time % 5 == 0) {
-        spawn();
-    }
-
-    /**
-     * logic for defending goes her
-     */
-    defend();
-
-}
+};
