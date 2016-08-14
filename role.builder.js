@@ -8,11 +8,13 @@ var roleBuilder = {
 
         if (creep.memory.working == false) {
             //creep.say('harvesting');
-            var source = creep.pos.findClosestByPath(FIND_SOURCES);
+            var source = creep.pos.findClosestByPath(FIND_SOURCES, {
+                filter: s => s.energy > 0
+            });
             if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(source);
             }
-            if (creep.carry.energy == creep.carryCapacity) {
+            if (creep.carry.energy == creep.carryCapacity || !source) {
                 creep.memory.working = true;
             }
         }

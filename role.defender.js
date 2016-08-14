@@ -17,8 +17,8 @@ var roleDefender = {
             creep.moveTo(flag[0]);
         }
         else {
-            creep.say('attack!');
-            if (creep.attack(intruder) == ERR_NOT_IN_RANGE) {
+            //creep.say('attack!');
+            if (creep.attack(intruder) == ERR_NOT_IN_RANGE || creep.rangedAttack(intruder) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(intruder);
             }
 

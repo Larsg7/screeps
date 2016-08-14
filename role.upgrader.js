@@ -10,7 +10,7 @@ var roleUpgrader = {
             if (creep.harvest(source) == ERR_NOT_IN_RANGE) {
                 creep.moveTo(source);
             }
-            if (creep.carry.energy == creep.carryCapacity) {
+            if (creep.carry.energy == creep.carryCapacity || !source) {
                 creep.memory.working = true;
             }
         }

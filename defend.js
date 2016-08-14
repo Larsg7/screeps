@@ -3,14 +3,14 @@
  */
 module.exports = function () {
     var towers = Game.spawns.Spawn1.room.find(FIND_MY_STRUCTURES, {
-        filter: {structureType: STRUCTURE_TOWER}
+        filter: t => t.structureType == STRUCTURE_TOWER
     });
 
     if (towers) {
         for (let tower in towers) {
-            var target = tower.pos.findClosestByRange(FIND_HOSTILE_CREEPS);
+            var target = towers[0].pos.findClosestByRange(FIND_HOSTILE_CREEPS);
 
-            tower.attack(target);
+            towers[0].attack(target);
         }
     }
 };

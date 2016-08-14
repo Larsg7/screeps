@@ -3,8 +3,8 @@ module.exports = function () {
     var minHarvesters = 3;
     var minBuilders = 2;
     var minRepairers = 2;
-    var minUpgraders = 4;
-    var minDefenders = 0;
+    var minUpgraders = 1;
+    var minDefenders = 2;
 
     var currentCreeps = _.sum(Game.creeps, c => true);
     var currentHarvesters = _.sum(Game.creeps, c => c.memory.role == 'harvester');
@@ -23,7 +23,7 @@ module.exports = function () {
         || maxCreeps == -1
     ) {
         var newRole = 'builder';
-        var newBodyDefault = [WORK, WORK, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE];
+        var newBodyDefault = [WORK, WORK, WORK, WORK, WORK, CARRY, CARRY, CARRY, CARRY, CARRY, MOVE, MOVE, MOVE, MOVE, MOVE];
         var newBody;
 
         if (currentBuilders < minBuilders) {
@@ -36,7 +36,7 @@ module.exports = function () {
         }
         if (currentDefenders < minDefenders){
             newRole = 'defender';
-            newBody = [ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE];
+            newBody = [ATTACK, ATTACK, ATTACK, ATTACK, MOVE, MOVE, MOVE, MOVE];
         }
         if (currentUpgraders < minUpgraders) {
             newRole = 'upgrader';

@@ -36,15 +36,19 @@ module.exports.loop = function () {
                 roleDefender.run(creep);
         }
 
-        if (creep.room.controller.level == 3) {
-            creep.room.createConstructionSite(35,38,STRUCTURE_TOWER);
-        }
+
     }
 
     /**
      * logic for spawning goes here
      */
     if (Game.time % 5 == 0) {
+        for(var i in Memory.creeps) {
+            if(!Game.creeps[i]) {
+                delete Memory.creeps[i];
+            }
+        }
+        
         spawn();
     }
 
