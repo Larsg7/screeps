@@ -51,7 +51,7 @@ module.exports = function () {
                 role: newRole,
                 working: false
             });
-            console.log("A new " + newRole + " has been spawned.");
+            console.log("A old " + newRole + " has been spawned.");
         }
     }
 };

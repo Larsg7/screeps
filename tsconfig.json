@@ -1,0 +1,12 @@
+{
+  "compilerOptions": {
+    "module": "commonjs",
+    "target": "es6",
+    "sourceMap": false,
+    "outDir": "./build"
+  },
+  "files": [
+    "src/main.ts",
+    "typings/index"
+  ]
+}
